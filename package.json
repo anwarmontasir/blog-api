@@ -1,0 +1,28 @@
+{
+    "name": "blog-api",
+    "version": "0.0.1",
+    "description": "reading the Thinkful Node content",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "express": "^4.16.3",
+        "morgan": "^1.9.1",
+        "uuid": "^3.3.2"
+    },
+    "engines": {
+        "node": "4.4.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/anwarmontasir/blog-api"
+    },
+    "keywords": [
+        "node",
+        "hyperdev",
+        "express"
+    ],
+    "license": "MIT"
+}
