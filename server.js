@@ -48,7 +48,7 @@ app.put('/blog-posts/:id', jsonParser, (req, res) => {
         return res.status(400).send(message);
     }
     console.log(`Updating shopping list item ${req.params.id}`);
-    BlogPost.update({
+    BlogPosts.update({
         id: req.params.id,
         title: req.body.title,
         content: req.body.content,
@@ -57,7 +57,7 @@ app.put('/blog-posts/:id', jsonParser, (req, res) => {
     res.status(204).end();
 });
 
-app.delete('/blog-posts/:id', (red, res) => {
+app.delete('/blog-posts/:id', (req, res) => {
     BlogPosts.delete(req.params.id);
     console.log(`Deleted shopping list item ${req.params.id}`);
     res.status(204).end();
