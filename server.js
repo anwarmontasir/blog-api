@@ -10,6 +10,10 @@ const app = express();
 
 app.use(morgan('common'));
 
+// create blog post content
+BlogPosts.create('Lorem Ipsum is the greatest!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Rev. Bob Ipsum');
+BlogPosts.create('Kavanaugh is the worst', 'I can\'t believe we\'re even considering this guy', 'Joe Obvious');
+
 app.get('/blog-posts', (req, res) => {
     res.json(BlogPosts.get());
 });
