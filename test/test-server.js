@@ -52,6 +52,17 @@ describe('blog post', function() {
         });
     });
 
+    it('should error if POST missing expected values', function() {
+        const badRequest = {};
+        return chai
+        .request(app)
+        .post('/blog-posts')
+        .send(badRequest)
+        .then(function(res) {
+            expect(res).to.have.status(400);
+        });
+    });
+
     it('should update items on PUT', function() {
         const updateData = {
             title: 'I Wanna Eat The Sun',
@@ -75,4 +86,17 @@ describe('blog post', function() {
         );
     });
 
+    it('should delete items on DELETE', function() {
+        return(
+            chai
+            .request(app)
+            .get('/blog-posts')
+            .then(function(res) {
+                return chai.request(app).delete(`/blog-posts/${res.body[0].id}`);
+            })
+            .then(function(res) {
+                expect(res).to.have.status(204);
+            })
+        );
+    });
 });
