@@ -51,4 +51,28 @@ describe('blog post', function() {
             expect(res.body.author).to.equal(newPost.author);
         });
     });
+
+    it('should update items on PUT', function() {
+        const updateData = {
+            title: 'I Wanna Eat The Sun',
+            content: 'Yeah!',
+            author: 'Lenny Kravitz'
+        };
+        return(
+            chai
+            .request(app)
+            .get('/blog-posts')
+            .then(function(res) {
+                updateData.id = res.body[0].id;
+                return chai
+                .request(app)
+                .put(`/blog-posts/${updateData.id}`)
+                .send(updateData);
+            })
+            .then(function(res) {
+                expect(res).to.have.status(204);
+            })
+        );
+    });
+
 });
