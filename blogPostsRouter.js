@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const jsonParser = require('body-parser');
 
 const { BlogPosts } = require('./models');
 
@@ -7,11 +8,11 @@ const { BlogPosts } = require('./models');
 BlogPosts.create('Lorem Ipsum is the greatest!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Rev. Bob Ipsum');
 BlogPosts.create('Kavanaugh is the worst', 'I can\'t believe we\'re even considering this guy', 'Joe Obvious');
 
-router.get('/blog-posts', (req, res) => {
+router.get('', (req, res) => {
     res.json(BlogPosts.get());
 });
 
-router.post('/blog-posts', jsonParser, (req, res) => {
+router.post('', jsonParser, (req, res) => {
     const requiredFields = ['title', 'content', 'author'];
     for (let i=0; i<requiredFields.length; i++) {
         const field = requiredFields[i];
@@ -25,7 +26,7 @@ router.post('/blog-posts', jsonParser, (req, res) => {
     res.status(201).json(item);
 });
 
-router.put('/blog-posts/:id', jsonParser, (req, res) => {
+router.put('/:id', jsonParser, (req, res) => {
     const requiredFields = ['title', 'content', 'author'];
     for (let i=0; i<requiredFields.length; i++) {
         const field = requiredFields[i];
@@ -50,7 +51,7 @@ router.put('/blog-posts/:id', jsonParser, (req, res) => {
     res.status(204).end();
 });
 
-router.delete('/blog-posts/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     BlogPosts.delete(req.params.id);
     console.log(`Deleted shopping list item ${req.params.id}`);
     res.status(204).end();
