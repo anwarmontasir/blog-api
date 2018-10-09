@@ -4,7 +4,8 @@
     "description": "reading the Thinkful Node content",
     "main": "server.js",
     "scripts": {
-        "start": "nodemon server.js"
+        "start": "nodemon server.js",
+        "test": "mocha"
     },
     "dependencies": {
         "body-parser": "^1.18.3",
@@ -24,5 +25,10 @@
         "hyperdev",
         "express"
     ],
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "chai-http": "^4.2.0",
+        "mocha": "^5.2.0"
+    }
 }

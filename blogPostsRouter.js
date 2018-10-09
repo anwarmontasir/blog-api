@@ -8,11 +8,11 @@ const { BlogPosts } = require('./models');
 BlogPosts.create('Lorem Ipsum is the greatest!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Rev. Bob Ipsum');
 BlogPosts.create('Kavanaugh is the worst', 'I can\'t believe we\'re even considering this guy', 'Joe Obvious');
 
-router.get('', (req, res) => {
+router.get('/', (req, res) => {
     res.json(BlogPosts.get());
 });
 
-router.post('', jsonParser, (req, res) => {
+router.post('/', jsonParser, (req, res) => {
     const requiredFields = ['title', 'content', 'author'];
     for (let i=0; i<requiredFields.length; i++) {
         const field = requiredFields[i];
